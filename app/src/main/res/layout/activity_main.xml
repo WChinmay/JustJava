@@ -11,6 +11,24 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="16dp"
+        android:text="Toppings"
+        android:textAllCaps="true"
+        android:textSize="16sp" />
+
+    <CheckBox
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Whipped Cream"
+        android:textSize="16sp"
+        android:paddingLeft="24dp"
+
+        />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="16dp"
+        android:layout_marginTop="16dp"
         android:text="Quantity"
         android:textAllCaps="true"
         android:textSize="16sp" />
