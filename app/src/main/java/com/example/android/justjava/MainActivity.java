@@ -8,6 +8,7 @@ import android.view.View;
 import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.text.NumberFormat;
 
@@ -21,7 +22,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
     }
-    int quantity = 0;
+    int quantity = 2;
     /**
      * This method is called when the order button is clicked.
      */
@@ -47,15 +48,27 @@ public class MainActivity extends AppCompatActivity {
      * This method is called when the plus button is clicked.
      */
     public void increment(View view) {
-        quantity++;
-        display(quantity);
+        if (quantity == 100) {
+            // Show an error message as a toast
+            Toast.makeText(this, "You cannot have more than 100 coffees", Toast.LENGTH_SHORT).show();
+            // Exit this method early because there's nothing left to do
+            return;
+        }
+        quantity = quantity + 1;
+        displayQuantity(quantity);
     }
     /**
      * This method is called when the minus button is clicked.
      */
     public void decrement(View view) {
-        quantity--;
-        display(quantity);
+        if (quantity == 1) {
+            // Show an error message as a toast
+            Toast.makeText(this, "You cannot have less than 1 coffee", Toast.LENGTH_SHORT).show();
+            // Exit this method early because there's nothing left to do
+            return;
+        }
+        quantity = quantity - 1;
+        displayQuantity(quantity);
     }
 
     /**
@@ -90,7 +103,7 @@ public class MainActivity extends AppCompatActivity {
     /**
      * This method displays the given quantity value on the screen.
      */
-    private void display(int number) {
+    private void displayQuantity(int number) {
         TextView quantityTextView = (TextView) findViewById(R.id.quantity_text_view);
         quantityTextView.setText("" + number);
     }
