@@ -32,7 +32,7 @@ public class MainActivity extends AppCompatActivity {
         boolean hasChocolate = chocolateCheckbox.isChecked();
         EditText nameField = (EditText) findViewById(R.id.name_field);
         String name = nameField.getText().toString();
-        int price = calculatePrice();
+        int price = calculatePrice(hasWhippedCream, hasChocolate);
         String priceMessage = createOrderSummary(price, hasWhippedCream, hasChocolate, name);
         displayMessage(priceMessage);
     }
@@ -62,8 +62,13 @@ public class MainActivity extends AppCompatActivity {
      * This method returns the total price.
      * @return total price.
      */
-    private int calculatePrice() {
-        return quantity * 5;
+    private int calculatePrice(boolean addWhippedCream, boolean addChocolate) {
+        int basePrice = 5;
+        if (addWhippedCream==true)
+            basePrice += 1;
+        if (addChocolate==true)
+            basePrice += 2;
+        return quantity * basePrice;
     }
 
     /**
